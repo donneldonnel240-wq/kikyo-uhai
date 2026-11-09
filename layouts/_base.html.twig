@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ site.title }} — {{ page.title|default('Accueil') }}</title>
+  <meta name="description" content="{{ page.description|default(site.description) }}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
+<body>
+  <header class="site-header" id="top">
+    <div class="container nav-wrap">
+      <a class="brand" href="{{ site.baseurl }}">
+        <span class="brand-mark">💧</span>
+        <span class="brand-text">{{ site.title }}</span>
+      </a>
+      <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="nav">☰</button>
+      <nav id="nav" class="nav">
+        <a href="#accueil">Accueil</a>
+        <a href="#apropos">À propos</a>
+        <a href="#services">Services</a>
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropbtn" aria-expanded="false" aria-haspopup="true">Gestion ▾</button>
+          <div class="nav-dropmenu" role="menu" aria-label="Gestion">
+            <a href="#gestion" data-open-tab="commandes" role="menuitem">Commandes</a>
+            <a href="#gestion" data-open-tab="livraisons" role="menuitem">Livraisons</a>
+            <a href="#gestion" data-open-tab="corbeille" role="menuitem">Corbeille</a>
+            <a href="#gestion" role="menuitem">Formulaire / Tableau</a>
+          </div>
+        </div>
+        <a href="#qualite">Qualité</a>
+        <a href="#contact" class="btn btn-sm">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer" id="contact">
+    <div class="container footer-grid">
+      <div>
+        <h3>{{ site.title }}</h3>
+        <p>{{ site.description }}</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p>Butembo, République Démocratique du Congo</p>
+        <p>Eau potable pour la vie</p>
+      </div>
+      <div>
+        <h4>Engagement</h4>
+        <p>Hygiène, sécurité, qualité et service aux familles.</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© {{ "now"|date("Y") }} {{ site.author.name|default(site.title) }}. Tous droits réservés.</p>
+      <a href="#top">Retour en haut ↑</a>
+    </div>
+  </footer>
+
+  <script src="{{ asset('js/main.js') }}"></script>
+</body>
+</html>
